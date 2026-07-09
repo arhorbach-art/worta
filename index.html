@@ -16,7 +16,7 @@
   :root{
     --bg:#fbfbfd; --surface:#ffffff; --surface-2:#f5f5f7; --field:#ebebee; --footer-bg:#f2f2f4;
     --ink:#1d1d1f; --grey:#6e6e73; --grey-2:#86868b; --line:#d2d2d7;
-    --blue:#0071e3; --blue-press:#0077ed; --green:#1d8a4e; --orange:#bf5000; --red:#d70015;
+    --blue:#0071e3; --blue-press:#0077ed; --green:#1d8a4e; --orange:#bf5000; --red:#d70015; --yellow:#b58a00; --yellow-bg:rgba(255,204,0,.20); --red-bg:rgba(215,0,21,.10); --green-bg:rgba(29,138,78,.12);
     --indigo:#5856d6; --teal:#1d8d9e; --pink:#d6336c; --purple:#8e44c5; --cyan:#0a87a8;
     --de-red:#c8102e; --de-gold:#ab7d17;
     --radius:18px; --radius-s:12px;
@@ -25,7 +25,7 @@
   :root[data-theme="dark"]{
     --bg:#000000; --surface:#1c1c1e; --surface-2:#2c2c2e; --field:#2c2c2e; --footer-bg:#131315;
     --ink:#f5f5f7; --grey:#98989d; --grey-2:#8e8e93; --line:#3a3a3c;
-    --blue:#0a84ff; --blue-press:#409cff; --green:#30d158; --orange:#ff9f0a; --red:#ff453a;
+    --blue:#0a84ff; --blue-press:#409cff; --green:#30d158; --orange:#ff9f0a; --red:#ff453a; --yellow:#ffd60a; --yellow-bg:rgba(255,214,10,.16); --red-bg:rgba(255,69,58,.14); --green-bg:rgba(48,209,88,.16);
     --indigo:#7d7aff; --teal:#40c2d6; --pink:#ff6482; --purple:#bf7af0; --cyan:#5ac8eb;
     --de-red:#e5484d; --de-gold:#d9b34e;
   }
@@ -170,7 +170,7 @@
   .stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-s);padding:9px 8px;text-align:center}
   .stat .n{font-size:21px;font-weight:600;letter-spacing:-0.02em}
   .stat .l{font-size:10.5px;color:var(--grey);margin-top:2px;font-weight:400}
-  .stat.k .n{color:var(--green)} .stat.nw .n{color:var(--orange)}
+  .stat.k .n{color:var(--green)} .stat.nw .n{color:var(--red)} .stat.lr .n{color:var(--yellow)}
   .stage{min-height:360px;display:flex;align-items:center;justify-content:center}
   .empty{text-align:center;color:var(--grey);max-width:460px;padding:30px}
   .empty .big{font-size:24px;font-weight:600;color:var(--ink);margin-bottom:10px;letter-spacing:-0.02em}
@@ -256,30 +256,34 @@
   .browse-topic-h{font-size:13px;font-weight:500;color:var(--ink);margin:14px 0 6px;display:flex;align-items:center;gap:8px}
   .browse-topic-n{font-size:11px;color:var(--grey);font-weight:400}
   .browse-list{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--radius-s);overflow:hidden}
-  .browse-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:9px 13px;border-bottom:1px solid var(--line);font-size:14px}
+  .browse-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:12px 15px;border-bottom:1px solid var(--line);font-size:14px}
   .browse-row:last-child{border-bottom:none}
   .browse-row:nth-child(even){background:var(--surface-2)}
-  .browse-row-head{display:flex;flex-wrap:wrap;align-items:center;gap:10px;flex:1 1 auto;min-width:0}
-  .browse-dot{flex:0 0 auto;width:8px;height:8px;border-radius:50%;background:var(--line)}
-  .browse-dot.b2,.browse-dot.b3,.browse-dot.b4{background:var(--orange)}
-  .browse-dot.b5{background:var(--green)}
-  .browse-de{flex:1 1 34%;font-weight:500;display:flex;align-items:center;gap:4px;min-width:0}
-  .browse-back{flex:1 1 40%;color:var(--grey);min-width:0}
-  .browse-status-badge{flex:0 0 auto;font-size:11px;font-weight:500;padding:3px 10px;border-radius:980px;white-space:nowrap;background:var(--surface-2);color:var(--grey)}
-  .browse-status-badge.learning{background:rgba(191,80,0,.12);color:var(--orange)}
-  .browse-status-badge.known{background:rgba(29,138,78,.12);color:var(--green)}
+  .browse-row-head{display:flex;align-items:stretch;gap:12px;flex:1 1 100%;min-width:0;cursor:pointer;-webkit-tap-highlight-color:transparent;padding:2px 0}
+  .browse-main{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:3px;justify-content:center}
+  .browse-de{font-size:15px;font-weight:600;line-height:1.35;min-width:0;overflow-wrap:break-word;color:var(--ink)}
+  .browse-back{font-size:13.5px;line-height:1.4;color:var(--grey);min-width:0;overflow-wrap:break-word}
+  .browse-side{flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;gap:8px;min-height:56px}
+  [dir="rtl"] .browse-side{align-items:flex-start}
+  .browse-row .simple-toggle{pointer-events:none}
+  .browse-audio{display:flex;align-items:center;gap:9px;margin-bottom:10px}
+  .browse-audio .spk{pointer-events:auto}
+  .browse-audio-label{font-size:12.5px;color:var(--grey)}
+  .browse-status-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:980px;white-space:nowrap;background:var(--red-bg);color:var(--red)}
+  .browse-status-badge.learning{background:var(--yellow-bg);color:var(--yellow)}
+  .browse-status-badge.known{background:var(--green-bg);color:var(--green)}
   .browse-row .simple-toggle{flex:0 0 auto;width:28px;height:28px;padding:0;margin:0;border-radius:50%;border:1px solid var(--line);background:var(--surface-2);justify-content:center}
   .browse-row .simple-toggle:hover{background:#ebebed;opacity:1}
   .browse-row .simple-toggle .arr{width:13px;height:9px;font-size:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='9' viewBox='0 0 12 8'%3E%3Cpath fill='%2386868b' d='M6 8 0 2l1.4-1.4L6 5.2 10.6.6 12 2z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;transform:rotate(0deg)}
   .browse-row .simple-toggle.open .arr{transform:rotate(180deg)}
   .browse-row>.simple-wrap{flex-basis:100%;width:100%}
-  .browse-detail{padding:6px 4px 2px 18px}
+  .browse-detail{padding:8px 2px 4px}
   .browse-status-row{display:flex;align-items:center;gap:8px;margin-top:8px;flex-wrap:wrap}
-  .status-btn{font:inherit;font-size:12.5px;font-weight:500;padding:5px 13px;border-radius:980px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;transition:background .15s}
+  .status-btn{font:inherit;font-size:13.5px;font-weight:500;min-height:38px;padding:8px 18px;border-radius:980px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;transition:background .15s}
   .status-btn:hover{background:var(--surface-2)}
   .status-btn.active{color:#fff;border-color:transparent}
-  .status-btn.new.active{background:var(--grey-2);color:var(--ink)}
-  .status-btn.learning.active{background:var(--orange)}
+  .status-btn.new.active{background:var(--red)}
+  .status-btn.learning.active{background:var(--yellow);color:#1d1d1f}
   .status-btn.known.active{background:var(--green)}
   /* Gender quiz */
   .gender-score{font-size:13px;color:var(--grey);text-align:center;margin-top:10px}
@@ -448,7 +452,7 @@
   [dir="rtl"] .dc-total{margin-left:0;margin-right:auto}
   [dir="rtl"] .brand-accent{background:linear-gradient(270deg,var(--ink) 0 32%,var(--de-red) 32% 66%,var(--de-gold) 66% 100%)}
   [dir="rtl"] .cloze-hint,[dir="rtl"] .note,[dir="rtl"] .meaning{text-align:right}
-  [dir="rtl"] .browse-detail{padding-left:4px;padding-right:18px}
+
 </style>
 </head>
 <body>
@@ -1295,8 +1299,11 @@ function simpleHelpBlock(w, opts){
   </div>`;
 }
 function toggleSimple(btn){
-  const wrap=btn.nextElementSibling;
-  if(!wrap) return;
+  let wrap=btn.nextElementSibling;
+  if(!wrap || !wrap.classList || !wrap.classList.contains("simple-wrap")){
+    wrap = btn.parentElement ? btn.parentElement.nextElementSibling : null;
+  }
+  if(!wrap || !wrap.classList || !wrap.classList.contains("simple-wrap")) return;
   const open=wrap.classList.toggle("open");
   btn.classList.toggle("open", open);
 }
@@ -1614,7 +1621,7 @@ function renderStatStrip(){
   statsEl.innerHTML=`
     <div class="stat"><div class="n">${total}</div><div class="l">${t('statInScope')}</div></div>
     <div class="stat k"><div class="n">${known}</div><div class="l">${t('statKnown')}</div></div>
-    <div class="stat"><div class="n">${learning}</div><div class="l">${t('statLearning')}</div></div>
+    <div class="stat lr"><div class="n">${learning}</div><div class="l">${t('statLearning')}</div></div>
     <div class="stat nw"><div class="n">${fresh}</div><div class="l">${t('statNew')}</div></div>
     <div class="stat"><div class="n">${own}</div><div class="l">${t('statYourWords')}</div></div>`;
 }
@@ -2598,7 +2605,7 @@ function renderVerbStatStrip(){
   statsEl.innerHTML=`
     <div class="stat"><div class="n">${total}</div><div class="l">${t('statInScope')}</div></div>
     <div class="stat k"><div class="n">${known}</div><div class="l">${t('statKnown')}</div></div>
-    <div class="stat"><div class="n">${learning}</div><div class="l">${t('statLearning')}</div></div>
+    <div class="stat lr"><div class="n">${learning}</div><div class="l">${t('statLearning')}</div></div>
     <div class="stat nw"><div class="n">${fresh}</div><div class="l">${t('statNew')}</div></div>`;
 }
 function rebuildVerbs(){ buildVerbQueue(); renderVerbStatStrip(); renderVerbStage(); }
@@ -2818,7 +2825,7 @@ function renderPrepStatStrip(){
   statsEl.innerHTML=`
     <div class="stat"><div class="n">${total}</div><div class="l">${t('statInScope')}</div></div>
     <div class="stat k"><div class="n">${known}</div><div class="l">${t('statKnown')}</div></div>
-    <div class="stat"><div class="n">${learning}</div><div class="l">${t('statLearning')}</div></div>
+    <div class="stat lr"><div class="n">${learning}</div><div class="l">${t('statLearning')}</div></div>
     <div class="stat nw"><div class="n">${fresh}</div><div class="l">${t('statNew')}</div></div>`;
 }
 function rebuildPrep(){ buildPrepQueue(); renderPrepStatStrip(); renderPrepStage(); }
@@ -2946,22 +2953,27 @@ function setWordStatus(id, status){
 }
 function updateBrowseRowDOM(id){
   document.querySelectorAll('.browse-row[data-id="'+id+'"]').forEach(row=>{
-    const box = progress[id] ? progress[id].box : 1;
     const status = statusOf(id);
-    const dot = row.querySelector(".browse-dot");
-    if(dot){ dot.className = "browse-dot b"+box; dot.title = t('boxPrefix')+" "+box; }
     const badge = row.querySelector(".browse-status-badge");
     if(badge){ badge.className = "browse-status-badge "+status; badge.textContent = t(statusLabelKey(status)); }
     row.querySelectorAll(".status-btn").forEach(b=>{ b.classList.toggle("active", b.dataset.status===status); });
   });
 }
+function toggleBrowseRow(head){
+  const row=head.closest(".browse-row"); if(!row) return;
+  const wrap=row.querySelector(".simple-wrap");
+  const chev=row.querySelector(".simple-toggle");
+  if(!wrap) return;
+  const open=wrap.classList.toggle("open");
+  if(chev) chev.classList.toggle("open", open);
+}
 function browseRow(w){
-  const box = progress[w.id] ? progress[w.id].box : 1;
   const status = statusOf(w.id);
   const back = w[primaryField()];
   const formHtml = (w.form && w.form!=="—") ? ` <span class="pp-alt">(${esc(w.form)})</span>` : "";
   const detailParts = [];
-  if(w.ex) detailParts.push(`<div class="ex">${esc(w.ex)}${spk(w.ex,'sm')}</div>`);
+  detailParts.push(`<div class="browse-audio">${spk(w.de,'sm')}<span class="browse-audio-label">${t('playGerman')}</span></div>`);
+  if(w.ex) detailParts.push(`<div class="ex">${esc(w.ex)}</div>`);
   if(w.note) detailParts.push(`<div class="note"><b>${t('noteLabel')}</b> · ${esc(w.note)}</div>`);
   const relHtml=relatedWordsHtml(w);
   if(relHtml) detailParts.push(relHtml);
@@ -2969,13 +2981,16 @@ function browseRow(w){
     `<button type="button" class="status-btn ${s}${s===status?" active":""}" data-status="${s}" onclick="setWordStatus(${w.id},'${s}')">${t(statusLabelKey(s))}</button>`
   ).join("");
   return `<div class="browse-row" data-id="${w.id}">
-    <div class="browse-row-head">
-      <span class="browse-dot b${box}" title="${t('boxPrefix')} ${box}"></span>
-      <span class="browse-de">${esc(w.de)}${formHtml}${spk(w.de,'sm')}</span>
-      <span class="browse-back">${esc(back)}</span>
-      <span class="browse-status-badge ${status}">${t(statusLabelKey(status))}</span>
+    <div class="browse-row-head" role="button" tabindex="0" onclick="toggleBrowseRow(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleBrowseRow(this)}">
+      <div class="browse-main">
+        <div class="browse-de">${esc(w.de)}${formHtml}</div>
+        <div class="browse-back">${esc(back)}</div>
+      </div>
+      <div class="browse-side">
+        <span class="browse-status-badge ${status}">${t(statusLabelKey(status))}</span>
+        <span class="simple-toggle" aria-hidden="true"><span class="arr"></span></span>
+      </div>
     </div>
-    <button type="button" class="simple-toggle" onclick="toggleSimple(this)" title="${t('browseDetails')}"><span class="arr">▸</span></button>
     <div class="simple-wrap"><div class="simple-inner">
       <div class="browse-detail">
         ${detailParts.join("")}
