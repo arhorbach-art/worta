@@ -216,9 +216,9 @@
   .simple-toggle .arr{display:inline-block;transition:transform .3s ease;font-size:12px;line-height:1}
   .simple-toggle.open .arr{transform:rotate(90deg)}
   .simple-toggle.sub{font-size:12.5px;font-weight:500;margin-top:6px;color:var(--grey)}
-  .simple-wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
-  .simple-wrap.open{grid-template-rows:1fr}
-  .simple-inner{overflow:hidden;min-height:0}
+  .simple-wrap{overflow:hidden;max-height:0;opacity:0;transition:max-height .3s ease,opacity .25s ease}
+  .simple-wrap.open{max-height:1400px;opacity:1}
+  .simple-inner{min-height:0}
   .simple-wrap.open .simple-inner{animation:simpleFade .45s ease}
   @keyframes simpleFade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
   .simple-body{background:var(--surface-2);border-radius:var(--radius-s);padding:12px 14px;margin-top:4px}
@@ -659,7 +659,7 @@
       <button type="button" class="simple-toggle" onclick="toggleSimple(this)"><span class="arr">▸</span>&nbsp;Impressum</button>
       <div class="simple-wrap"><div class="simple-inner"><div class="info-body">
         <p><b>Angaben gemäß § 5 DDG</b></p>
-        <p>Verantwortlich für den Inhalt:<br>Artem Horbach<br>Kontakt: <span class="impressum-mail">ar.horbach@gmail.com</span></p>
+        <p>Verantwortlich für den Inhalt:<br>Artem Horbach<br>Kontakt: <span class="impressum-mail">[E‑Mail‑Adresse einfügen]</span></p>
         <p>Dieses Angebot ist ein nichtkommerzielles Lernprojekt für den Unterrichtsgebrauch.</p>
       </div></div></div>
       <button type="button" class="simple-toggle" onclick="toggleSimple(this)"><span class="arr">▸</span>&nbsp;Datenschutz</button>
@@ -726,7 +726,7 @@ const STRINGS = {
     nothingVerbsBody: "No verbs match this pool. Try All verbs or a different group.",
     addAWordBtn: "Add a word",
     lblEnglish: "English", lblRussian: "Russian", lblUkrainian: "Ukrainian", lblDeutsch: "German (simple)", lblArabish: "Arabic (draft)", lblVietnamese: "Vietnamese (draft)",
-    noteLabel: "Note", playGerman: "Listen (German)", toastStatusUpdated: "Status updated", relatedLabel: "Related",
+    noteLabel: "Note", playGerman: "Listen (German)", exampleToggle: "Example sentence", toastStatusUpdated: "Status updated", relatedLabel: "Related",
     simplerToggle: "Noch einfacher erklären", simplerQ: "Einfach gefragt: Was bedeutet",
     simplerA: "Ganz einfach:", simplerParts: "Wort-Bausteine:",
     simplerType: "Wortart:", simplerNoun: "Nomen", simplerVerb: "Verb",
@@ -806,7 +806,7 @@ const STRINGS = {
     nothingVerbsBody: "Жодне дієслово не підходить під цей набір. Спробуйте «Усі дієслова» або іншу групу.",
     addAWordBtn: "Додати слово",
     lblEnglish: "Англійська", lblRussian: "Російська", lblUkrainian: "Українська", lblDeutsch: "Німецька (просто)", lblArabish: "Арабська (чернетка)", lblVietnamese: "В'єтнамська (чернетка)",
-    noteLabel: "Примітка", playGerman: "Прослухати (нім.)", toastStatusUpdated: "Статус оновлено", relatedLabel: "Споріднені",
+    noteLabel: "Примітка", playGerman: "Прослухати (нім.)", exampleToggle: "Приклад речення", toastStatusUpdated: "Статус оновлено", relatedLabel: "Споріднені",
     tabDash: "Панель", dashOverallMastered: "опановано загалом", dashStreak: "днів поспіль", dashStudied: "слів вивчено", dashTroubled: "потребують практики", manualTitle: "Як це працює", manualBoxes: "Кожне слово проходить 5 коробок: правильна відповідь → на коробку вище, помилка → назад у коробку 1. Коробка 5 = вивчено.", manualStatus: "У списку слів можна вручну встановити статус слова: Нове / У вивченні / Знаю.", manualSave: "Прогрес зберігається автоматично в цьому браузері на цьому пристрої.", manualBackup: "Кнопка «Зберегти» завантажує резервну копію, «Імпорт» — відновлює її, наприклад на новому телефоні.", manualInstall: "Додайте сторінку на головний екран, щоб користуватися нею як застосунком.",
     dashMastered: "опановано", dashLearning: "вивчається", dashNew: "нові", dashTotal: "усього",
     dashChartTitle: "Прогрес у часі", dashChartSub: "Усього опанованих слів (Бокс 5) за день", dashIn30: "за 30 днів",
@@ -881,7 +881,7 @@ const STRINGS = {
     nothingVerbsBody: "Под этот набор не подходит ни один глагол. Попробуйте «Все глаголы» или другую группу.",
     addAWordBtn: "Добавить слово",
     lblEnglish: "Английский", lblRussian: "Русский", lblUkrainian: "Украинский", lblDeutsch: "Немецкий (просто)", lblArabish: "Арабский (черновик)", lblVietnamese: "Вьетнамский (черновик)",
-    noteLabel: "Примечание", playGerman: "Прослушать (нем.)", toastStatusUpdated: "Статус обновлён", relatedLabel: "Похожие",
+    noteLabel: "Примечание", playGerman: "Прослушать (нем.)", exampleToggle: "Пример предложения", toastStatusUpdated: "Статус обновлён", relatedLabel: "Похожие",
     tabDash: "Панель", dashOverallMastered: "освоено всего", dashStreak: "дней подряд", dashStudied: "слов изучено", dashTroubled: "нужна практика", manualTitle: "Как это работает", manualBoxes: "Каждое слово проходит 5 коробок: правильный ответ → на коробку выше, ошибка → назад в коробку 1. Коробка 5 = выучено.", manualStatus: "В списке слов можно вручную задать статус слова: Новое / В изучении / Знаю.", manualSave: "Прогресс сохраняется автоматически в этом браузере на этом устройстве.", manualBackup: "Кнопка «Сохранить» скачивает резервную копию, «Импорт» — восстанавливает её, например на новом телефоне.", manualInstall: "Добавьте страницу на главный экран, чтобы пользоваться ею как приложением.",
     dashMastered: "освоено", dashLearning: "изучается", dashNew: "новые", dashTotal: "всего",
     dashChartTitle: "Прогресс во времени", dashChartSub: "Всего освоенных слов (Бокс 5) за день", dashIn30: "за 30 дней",
@@ -956,7 +956,7 @@ const STRINGS = {
     nothingVerbsBody: "Kein Verb passt zu dieser Auswahl. Versuch „Alle Verben“ oder eine andere Gruppe.",
     addAWordBtn: "Wort hinzufügen",
     lblEnglish: "Englisch", lblRussian: "Russisch", lblUkrainian: "Ukrainisch", lblDeutsch: "Deutsch (einfach)", lblArabish: "Arabisch (Entwurf)", lblVietnamese: "Vietnamesisch (Entwurf)",
-    noteLabel: "Hinweis", playGerman: "Anhören (Deutsch)", toastStatusUpdated: "Status aktualisiert", relatedLabel: "Verwandt",
+    noteLabel: "Hinweis", playGerman: "Anhören (Deutsch)", exampleToggle: "Beispielsatz", toastStatusUpdated: "Status aktualisiert", relatedLabel: "Verwandt",
     simplerToggle: "Noch einfacher erklären", simplerQ: "Einfach gefragt: Was bedeutet",
     simplerA: "Ganz einfach:", simplerParts: "Wort-Bausteine:",
     simplerType: "Wortart:", simplerNoun: "Nomen", simplerVerb: "Verb",
@@ -1036,7 +1036,7 @@ const STRINGS = {
     nothingVerbsBody: "ما في أفعال مطابقة. جرّب «كل الأفعال» أو مجموعة تانية.",
     addAWordBtn: "ضيف كلمة",
     lblEnglish: "الإنكليزي", lblRussian: "الروسي", lblUkrainian: "الأوكراني", lblDeutsch: "الألماني (بسيط)", lblArabish: "العربي (مسودة)", lblVietnamese: "الفيتنامي (مسودة)",
-    noteLabel: "ملاحظة", playGerman: "اسمع (بالألماني)", toastStatusUpdated: "تم تحديث الحالة", relatedLabel: "كلمات مشابهة",
+    noteLabel: "ملاحظة", playGerman: "اسمع (بالألماني)", exampleToggle: "جملة مثال", toastStatusUpdated: "تم تحديث الحالة", relatedLabel: "كلمات مشابهة",
     tabDash: "لوحة التحكم", dashOverallMastered: "متقنة بالمجمل", dashStreak: "أيام متتالية", dashStudied: "كلمات مدروسة", dashTroubled: "تحتاج تمرين", manualTitle: "كيف بيشتغل", manualBoxes: "كل كلمة بتمشي بـ5 صناديق: جواب صح → صندوق أعلى، غلط → رجوع للصندوق 1. الصندوق 5 = متعلَّمة.", manualStatus: "بلائحة الكلمات فيك كمان تحدد حالة الكلمة بنفسك: جديدة / قيد التعلم / بعرفها.", manualSave: "تقدمك بينحفظ تلقائياً بهالمتصفح على هالجهاز.", manualBackup: "زر «حفظ» بينزّل نسخة احتياطية، و«استيراد» بيرجّعها — مثلاً على موبايل جديد.", manualInstall: "ضيف الصفحة لشاشة البداية لتستعملها متل تطبيق.",
     dashMastered: "متقنة", dashLearning: "قيد التعلم", dashNew: "جديدة", dashTotal: "المجموع",
     dashChartTitle: "التقدم عبر الوقت", dashChartSub: "مجموع الكلمات المتقنة (صندوق ٥) كل يوم", dashIn30: "خلال ٣٠ يوم",
@@ -1111,7 +1111,7 @@ const STRINGS = {
     nothingVerbsBody: "Không có động từ nào khớp. Thử «Tất cả động từ» hoặc nhóm khác.",
     addAWordBtn: "Thêm một từ",
     lblEnglish: "Tiếng Anh", lblRussian: "Tiếng Nga", lblUkrainian: "Tiếng Ukraina", lblDeutsch: "Tiếng Đức (đơn giản)", lblArabish: "Tiếng Ả Rập (bản nháp)", lblVietnamese: "Tiếng Việt (bản nháp)",
-    noteLabel: "Ghi chú", playGerman: "Nghe (tiếng Đức)", toastStatusUpdated: "Đã cập nhật trạng thái", relatedLabel: "Liên quan",
+    noteLabel: "Ghi chú", playGerman: "Nghe (tiếng Đức)", exampleToggle: "Câu ví dụ", toastStatusUpdated: "Đã cập nhật trạng thái", relatedLabel: "Liên quan",
     tabDash: "Bảng điều khiển", dashOverallMastered: "đã thuộc tổng cộng", dashStreak: "ngày liên tiếp", dashStudied: "từ đã học", dashTroubled: "cần luyện thêm", manualTitle: "Cách hoạt động", manualBoxes: "Mỗi từ đi qua 5 hộp: trả lời đúng → lên một hộp, sai → về hộp 1. Hộp 5 = đã thuộc.", manualStatus: "Trong Danh sách từ, bạn cũng có thể tự đặt trạng thái: Mới / Đang học / Đã biết.", manualSave: "Tiến độ được lưu tự động trong trình duyệt này trên thiết bị này.", manualBackup: "Nút Lưu tải về tệp sao lưu, Nhập khôi phục lại — ví dụ trên điện thoại mới.", manualInstall: "Thêm trang vào màn hình chính để dùng như một ứng dụng.",
     dashMastered: "đã thuộc", dashLearning: "đang học", dashNew: "mới", dashTotal: "tổng cộng",
     dashChartTitle: "Tiến độ theo thời gian", dashChartSub: "Tổng số từ đã thuộc (Hộp 5) mỗi ngày", dashIn30: "trong 30 ngày",
@@ -1191,7 +1191,11 @@ function answerBlock(w){
       <div class="pair"><div class="lab">${t(backLabelKey())}</div><div class="val">${esc(back)}${bForm&&bForm!=="—"?` <span class="pp-alt">(${esc(bForm)})</span>`:""}${isRev()?" "+spk(w.de,"sm"):""}</div></div>
     </div>
     ${simpleHelpBlock(w)}
-    ${w.ex?`<div class="ex">${esc(w.ex)}${spk(w.ex,"sm")}</div>`:""}
+    ${w.ex?`
+    <div class="simple-help">
+      <button type="button" class="simple-toggle" onclick="toggleSimple(this)"><span class="arr">▸</span> ${t('exampleToggle')}</button>
+      <div class="simple-wrap"><div class="simple-inner"><div class="ex">${esc(w.ex)}</div></div></div>
+    </div>`:""}
     ${w.note?`<div class="note"><b>${t('noteLabel')}</b> · ${esc(w.note)}</div>`:""}`;
 }
 
@@ -1268,14 +1272,13 @@ function simpleHelpBlock(w, opts){
   if(state.lang!=="de" || !w || !w.deExpl) return "";
   const head=(w.de||w.inf||"").trim();
   const easy=(w.deExplEasy||"").trim();
-  const chunks=deExplChunks(w.deExpl);
   const lines=[];
   if(!opts.hideAnswer && head)
     lines.push(`<div class="simple-line q">❓ ${t('simplerQ')} <b>„${esc(head)}“</b>?</div>`);
-  if(easy)
-    lines.push(`<div class="simple-line a">💡 ${t('simplerA')} ${esc(easy)} ${spk(easy,"sm")}</div>`);
-  else if(chunks.length)
-    lines.push(`<div class="simple-line a">💡 ${t('simplerA')} ${chunks.map(c=>`<span class="simple-chip">${esc(c)}</span>`).join(" ")}</div>`);
+  const mainExpl=String(w.deExpl||"").toLowerCase().replace(/\s+/g," ").trim();
+  const easyNorm=easy.toLowerCase().replace(/\s+/g," ").trim();
+  if(easy && easyNorm!==mainExpl)
+    lines.push(`<div class="simple-line a">💡 ${t('simplerA')} ${esc(easy)}</div>`);
   if(!opts.hideAnswer){
     const info=simpleWordInfo(w);
     if(info) lines.push(`<div class="simple-line">📚 ${info}</div>`);
@@ -1623,10 +1626,14 @@ function meaningBlock(w){
   const pf=primaryField();
   return `
     <div class="meaning">
-      <div class="pair"><div class="lab">${t(primaryLabelKey())}</div><div class="val">${esc(w[pf])}${pf==="deExpl"?" "+spk(w[pf],"sm"):""}</div></div>
+      <div class="pair"><div class="lab">${t(primaryLabelKey())}</div><div class="val">${esc(w[pf])}</div></div>
     </div>
     ${simpleHelpBlock(w)}
-    ${w.ex?`<div class="ex">${esc(w.ex)}${spk(w.ex,"sm")}</div>`:""}
+    ${w.ex?`
+    <div class="simple-help">
+      <button type="button" class="simple-toggle" onclick="toggleSimple(this)"><span class="arr">▸</span> ${t('exampleToggle')}</button>
+      <div class="simple-wrap"><div class="simple-inner"><div class="ex">${esc(w.ex)}</div></div></div>
+    </div>`:""}
     ${w.note?`<div class="note"><b>${t('noteLabel')}</b> · ${esc(w.note)}</div>`:""}`;
 }
 function tag(w){ return `<span class="topic-tag ${w.isCustom?'own':''}">${w.isCustom?t('addedPrefix'):''}${esc(w.topic)}</span>`; }
