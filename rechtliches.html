@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="robots" content="noindex">
+<title>Rechtliches — Wörta · B2 Vokabeltrainer</title>
+<style>
+  :root{
+    --bg:#fbfbfd; --surface:#ffffff; --surface-2:#f5f5f7; --field:#ebebee;
+    --ink:#1d1d1f; --grey:#6e6e73; --grey-2:#86868b; --line:#d2d2d7;
+    --blue:#0071e3; --de-red:#c8102e; --de-gold:#ab7d17;
+    --radius:18px; --radius-s:12px;
+    --font:-apple-system,"SF Pro Display","SF Pro Text",BlinkMacSystemFont,"Segoe UI",Roboto,system-ui,sans-serif;
+    --glass:rgba(251,251,253,.82);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#000000; --surface:#1c1c1e; --surface-2:#2c2c2e; --field:#2c2c2e;
+      --ink:#f5f5f7; --grey:#98989d; --grey-2:#8e8e93; --line:#38383a;
+      --blue:#0a84ff; --glass:rgba(0,0,0,.72);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 var(--font);
+       -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+
+  /* ---------- top bar ---------- */
+  .topbar{position:sticky;top:0;z-index:20;background:var(--glass);
+          -webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);
+          border-bottom:1px solid var(--line)}
+  .topbar-inner{max-width:760px;margin:0 auto;padding:10px 20px;
+                display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .brand{display:inline-flex;align-items:baseline;gap:8px;text-decoration:none;
+         padding:6px 10px;margin-left:-10px;border-radius:999px;transition:background .18s ease}
+  .brand:hover{background:var(--field)}
+  .brand-mark{color:var(--blue);font-weight:600;font-size:14px}
+  .brand-name{color:var(--ink);font-weight:700;font-size:16px;letter-spacing:-0.02em}
+  .brand-sub{color:var(--grey-2);font-size:12px;font-weight:600;letter-spacing:.02em}
+  @media (max-width:560px){ .brand-sub{display:none} }
+  .seg{display:flex;gap:2px;background:var(--surface-2);border:1px solid var(--line);
+       border-radius:999px;padding:3px}
+  .seg a{text-decoration:none;color:var(--grey);font-size:13px;font-weight:600;
+         padding:6px 13px;border-radius:999px;white-space:nowrap;
+         transition:background .18s ease,color .18s ease}
+  .seg a:hover{color:var(--ink)}
+  .seg a.active{background:var(--surface);color:var(--ink);
+                box-shadow:0 1px 4px rgba(0,0,0,.10)}
+  a:focus-visible,.seg a:focus-visible,.brand:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+  /* ---------- hero ---------- */
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px 40px}
+  .hero{padding:52px 0 8px}
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--grey-2);margin:0 0 10px}
+  h1{font-size:clamp(34px,6vw,46px);line-height:1.08;letter-spacing:-0.022em;font-weight:700;margin:0 0 14px}
+  .flag{width:84px;height:4px;border-radius:4px;margin:0 0 14px;
+        background:linear-gradient(90deg,var(--ink) 0 32%,var(--de-red) 32% 66%,var(--de-gold) 66% 100%);opacity:.9}
+  .stand{font-size:13.5px;color:var(--grey);margin:0 0 34px}
+
+  /* ---------- cards ---------- */
+  section.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+               padding:30px 30px 22px;margin:0 0 22px;scroll-margin-top:76px}
+  h2{font-size:22px;letter-spacing:-0.015em;font-weight:700;margin:0 0 18px}
+  .card p{margin:0 0 14px;color:var(--ink)}
+  .muted{color:var(--grey)}
+  .who{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;align-items:baseline;
+       background:var(--surface-2);border-radius:var(--radius-s);padding:16px 18px;margin:0 0 16px}
+  .who .role{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--grey-2);text-align:right;white-space:nowrap}
+  .who .name{font-size:15px;font-weight:600}
+  .who .mail{font-size:15px;font-weight:500;color:var(--blue);word-break:break-all}
+  @media (max-width:480px){
+    .who{grid-template-columns:1fr}
+    .who .role{text-align:left}
+    section.card{padding:22px 20px 14px}
+  }
+
+  /* Datenschutz numbered items */
+  .ds{display:grid;grid-template-columns:34px 1fr;gap:4px 16px;padding:16px 0;border-top:1px solid var(--line)}
+  .ds:first-of-type{border-top:none;padding-top:4px}
+  .ds .num{font-size:15px;font-weight:700;color:var(--grey-2);font-variant-numeric:tabular-nums;padding-top:1px}
+  .ds h3{font-size:16px;font-weight:650;margin:0 0 6px;letter-spacing:-0.01em}
+  .ds p{margin:0 0 8px;font-size:15px;color:var(--grey)}
+  .ds p b{color:var(--ink);font-weight:600}
+  @media (max-width:480px){ .ds{grid-template-columns:26px 1fr} }
+
+  .pagefoot{border-top:1px solid var(--line);margin-top:16px;padding:30px 20px 44px}
+  .credits{max-width:760px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:6px}
+  .credits-brand{font-size:13px;font-weight:600;color:var(--ink);letter-spacing:-0.01em}
+  .credits-accent{width:72px;height:3px;border-radius:3px;margin:2px 0 6px;opacity:.85;
+                  background:linear-gradient(90deg,var(--ink) 0 32%,var(--de-red) 32% 66%,var(--de-gold) 66% 100%)}
+  .credits-grid{display:grid;grid-template-columns:auto auto;gap:4px 12px;align-items:baseline}
+  .credits-role{font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--grey-2);text-align:right}
+  .credits-name{font-size:12.5px;font-weight:500;color:var(--grey);text-align:left}
+  .credits-copy{font-size:12px;color:var(--grey-2);margin-top:4px}
+  .foot-links{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:13px;flex-wrap:wrap;justify-content:center}
+  .foot-links a{color:var(--blue);text-decoration:none;padding:4px 6px;border-radius:8px}
+  .foot-links a:hover{background:var(--field)}
+  .foot-links .dot{color:var(--grey-2)}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html" aria-label="Zurück zu Wörta">
+      <span class="brand-mark" aria-hidden="true">←</span>
+      <span class="brand-name">Wörta</span>
+      <span class="brand-sub">B2 Vokabeltrainer</span>
+    </a>
+    <nav class="seg" aria-label="Abschnitte">
+      <a href="#impressum" class="active">Impressum</a>
+      <a href="#datenschutz">Datenschutz</a>
+      <a href="#quellen">Quellen</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <p class="eyebrow">Wörta · B2 Vokabeltrainer</p>
+    <h1>Rechtliches</h1>
+    <div class="flag" aria-hidden="true"></div>
+    <p class="stand">Stand: Juli 2026</p>
+  </div>
+
+  <!-- ==================== IMPRESSUM ==================== -->
+  <section class="card" id="impressum" aria-labelledby="h-impressum">
+    <h2 id="h-impressum">Impressum</h2>
+    <div class="who">
+      <span class="role">Entwicklung &amp; Design</span><span class="name">Artem Horbach</span>
+      <span class="role">Idee &amp; Wortschatz</span><span class="name">Anastasia Gebhard</span>
+      <span class="role">Kontakt</span><span class="mail">ar.horbach@gmail.com</span>
+    </div>
+    <p class="muted">Wörta ist ein nichtkommerzielles, privates Lernprojekt für den
+       Unterrichtsgebrauch. Es werden keine entgeltlichen Leistungen angeboten.</p>
+  </section>
+
+  <!-- ==================== DATENSCHUTZ ==================== -->
+  <section class="card" id="datenschutz" aria-labelledby="h-datenschutz">
+    <h2 id="h-datenschutz">Datenschutzerklärung</h2>
+
+    <div class="ds">
+      <div class="num">1</div>
+      <div>
+        <h3>Verantwortlicher</h3>
+        <p>Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) ist
+           <b>Artem Horbach</b>, erreichbar unter: ar.horbach@gmail.com.</p>
+      </div>
+    </div>
+
+    <div class="ds">
+      <div class="num">2</div>
+      <div>
+        <h3>Allgemeines</h3>
+        <p>Diese Web-App verwendet <b>keine Cookies</b>, <b>keine Analyse- oder
+           Tracking-Tools</b> und <b>keine Benutzerkonten</b>. Es werden keine
+           personenbezogenen Daten an uns übermittelt.</p>
+      </div>
+    </div>
+
+    <div class="ds">
+      <div class="num">3</div>
+      <div>
+        <h3>Hosting (GitHub Pages)</h3>
+        <p>Diese Seite wird bei GitHub Pages gehostet (GitHub Inc., 88 Colin P. Kelly Jr.
+           Street, San Francisco, CA 94107, USA). Beim Aufruf der Seite verarbeitet GitHub
+           technisch notwendige Daten – insbesondere die IP-Adresse – in Server-Logs, um
+           die Seite auszuliefern und die Sicherheit des Dienstes zu gewährleisten.
+           Rechtsgrundlage ist unser berechtigtes Interesse an einem sicheren und
+           zuverlässigen Betrieb (Art. 6 Abs. 1 lit. f DSGVO).</p>
+        <p>GitHub ist unter dem EU-US Data Privacy Framework zertifiziert; die
+           Übermittlung in die USA stützt sich auf den Angemessenheitsbeschluss der
+           EU-Kommission (Art. 45 DSGVO). Näheres regelt die Datenschutzerklärung von
+           GitHub; auf die Speicherdauer der Logs bei GitHub haben wir keinen Einfluss.</p>
+      </div>
+    </div>
+
+    <div class="ds">
+      <div class="num">4</div>
+      <div>
+        <h3>Lokale Speicherung (localStorage)</h3>
+        <p>Ihre Wörter und Lernfortschritte werden ausschließlich <b>lokal im Browser
+           Ihres Geräts</b> gespeichert (localStorage) und zu keinem Zeitpunkt an einen
+           Server übertragen. Diese Speicherung ist für die von Ihnen gewünschte Funktion
+           – das Speichern des Lernfortschritts – unbedingt erforderlich
+           (§ 25 Abs. 2 Nr. 2 TDDDG); eine Einwilligung ist daher nicht erforderlich.
+           Sie können die Daten jederzeit über die Funktion „Reset" oder über die
+           Einstellungen Ihres Browsers löschen.</p>
+      </div>
+    </div>
+
+    <div class="ds">
+      <div class="num">5</div>
+      <div>
+        <h3>Sprachausgabe</h3>
+        <p>Die Vorlesefunktion nutzt die Sprachausgabe Ihres Browsers bzw.
+           Betriebssystems (Web Speech API). Die Verarbeitung erfolgt in der Regel lokal
+           auf Ihrem Gerät; je nach Browser können auch Netzwerkstimmen des jeweiligen
+           Anbieters zum Einsatz kommen.</p>
+      </div>
+    </div>
+
+    <div class="ds">
+      <div class="num">6</div>
+      <div>
+        <h3>Google-Suche</h3>
+        <p>Das Suchfeld im Kopfbereich öffnet die Google-Suche in einem neuen Tab.
+           Erst wenn Sie eine Suche aktiv absenden, wird Ihre Suchanfrage an Google
+           übertragen; dabei gelten die Datenschutzbestimmungen von Google.</p>
+      </div>
+    </div>
+
+    <div class="ds">
+      <div class="num">7</div>
+      <div>
+        <h3>Ihre Rechte</h3>
+        <p>Sie haben nach der DSGVO das Recht auf Auskunft (Art. 15), Berichtigung
+           (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18),
+           Datenübertragbarkeit (Art. 20) sowie Widerspruch gegen die Verarbeitung
+           (Art. 21). Sie haben zudem das Recht, sich bei einer
+           Datenschutz-Aufsichtsbehörde zu beschweren (Art. 77 DSGVO), z. B. bei der
+           Berliner Beauftragten für Datenschutz und Informationsfreiheit.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== QUELLEN ==================== -->
+  <section class="card" id="quellen" aria-labelledby="h-quellen">
+    <h2 id="h-quellen">Quellen</h2>
+    <p>Die Testfragen im Quiz-Modul stammen aus dem Gesamtfragenkatalog zum
+       Einbürgerungstest / Test „Leben in Deutschland" (Bundesamt für Migration und
+       Flüchtlinge, BAMF). Die englischen Übersetzungen sind inoffiziell und dienen
+       ausschließlich Lernzwecken.</p>
+    <p>Beispielsätze und Erklärungen wurden eigenständig erstellt.</p>
+  </section>
+
+</main>
+
+<footer class="pagefoot">
+  <div class="credits">
+    <div class="credits-brand">Wörta · B2 Vokabeltrainer</div>
+    <div class="credits-accent" aria-hidden="true"></div>
+    <div class="credits-grid">
+      <span class="credits-role">Entwicklung &amp; Design</span><span class="credits-name">Artem Horbach</span>
+      <span class="credits-role">Idee &amp; Wortschatz</span><span class="credits-name">Anastasia Gebhard</span>
+    </div>
+    <div class="credits-copy">© Berlin 2026</div>
+    <nav class="foot-links" aria-label="Seiten">
+      <a href="index.html">← Zurück zu Wörta</a><span class="dot" aria-hidden="true">·</span><a href="#impressum">Impressum</a><span class="dot" aria-hidden="true">·</span><a href="#datenschutz">Datenschutz</a><span class="dot" aria-hidden="true">·</span><a href="#quellen">Quellen</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var links = document.querySelectorAll('.seg a');
+  var map = {};
+  links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+  function setActive(id){
+    links.forEach(function(a){ a.classList.remove('active'); });
+    if(map[id]) map[id].classList.add('active');
+  }
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting) setActive(e.target.id); });
+    }, {rootMargin:'-72px 0px -60% 0px', threshold:0});
+    document.querySelectorAll('section.card').forEach(function(s){ obs.observe(s); });
+  }
+  links.forEach(function(a){
+    a.addEventListener('click', function(){ setActive(a.getAttribute('href').slice(1)); });
+  });
+})();
+</script>
+</body>
+</html>
